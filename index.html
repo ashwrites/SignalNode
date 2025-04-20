@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignalNode – One Node. Infinite Signals.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background-color: #0E0F12;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+      background-image: url('https://fxmedia.s3.amazonaws.com/articles/Trading_Forex_como_funciona_forex.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+    }
+    header div {
+      background: rgba(14, 15, 18, 0.7);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header img.logo {
+      width: 200px;
+      margin-bottom: -60px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #3DA9FC;
+    }
+    p.tagline {
+      font-size: 1.2rem;
+      color: #FFFFFF;
+    }
+    nav {
+      background: #1A1B1F;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 0.5rem;
+      color: #3DA9FC;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      scroll-margin-top: 100px; /* or the height of your nav */
+    }
+    h2 {
+      color: #FFFFFF;
+      text-align: left;
+    }
+    .cta-buttons a {
+      display: inline-block;
+      margin: 1rem 1rem 0 0;
+      padding: 0.75rem 1.5rem;
+      background-color: #3DA9FC;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    footer {
+      background: #1A1B1F;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #B0B3B8;
+    }
+    .tiers-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+      background: url('https://fxmedia.s3.amazonaws.com/articles/Trading_Forex_como_funciona_forex.jpeg');
+      background-blend-mode: overlay;
+      background-color: rgba(26, 27, 31, 0.85);
+      background-size: cover;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .tier {
+      background: rgba(14, 15, 18, 0.8);
+      border: 2px solid #3DA9FC;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 250px;
+      text-align: center;
+    }
+    .tier h3 {
+      margin-top: 0;
+      color: #3DA9FC;
+    }
+    .tier ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .tier ul li::before {
+      content: '✔';
+      color: #3DA9FC;
+      margin-right: 0.5rem;
+    }
+    .tier p.price {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .social-links {
+      margin-top: 1rem;
+    }
+    .social-links p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .social-links a {
+      color: #3DA9FC;
+      text-decoration: none;
+    }
+    .store-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+  }
+  .store-item {
+    flex: 1 1 200px;
+    background: url('https://fxmedia.s3.amazonaws.com/articles/Trading_Forex_como_funciona_forex.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(26, 27, 31, 0.85);
+    background-blend-mode: overlay;
+    border: 2px solid #3DA9FC;
+    border-radius: 10px;
+    padding: 1.5rem;
+    max-width: 220px;
+  }
+  .store-item h3 {
+    color: #3DA9FC;
+    margin-bottom: 0.5rem;
+  }
+  .store-item p {
+    margin: 0.5rem 0;
+    color: #B0B3B8;
+  }
+  .store-item a {
+    color: #3DA9FC;
+    text-decoration: underline;
+    font-size: 0.9rem;
+  }
+    form {
+      background: url('https://fxmedia.s3.amazonaws.com/articles/Trading_Forex_como_funciona_forex.jpeg');
+      background-blend-mode: overlay;
+      background-color: rgba(26, 27, 31, 0.9);
+      background-size: cover;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    form button {
+      background-color: #3DA9FC;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #2d8ad1;
+    }
+    @media (max-width: 600px) {
+      .tiers-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <img class="logo" src="https://i.postimg.cc/VkHc8SsN/e3e97349-a45a-442f-aa38-1705a97cc40b.png" alt="SignalNode Logo">
+      <h1>SignalNode.io</h1>
+      <p class="tagline">One Node. Infinite Signals.</p>
+    </div>
+  </header>
+  <nav>
+    <a href="#home"><i class="fas fa-house"></i>Home</a>
+    <a href="#about"><i class="fas fa-circle-info"></i>About</a>
+    <a href="#free"><i class="fas fa-chart-line"></i>Free Analysis</a>
+    <a href="#tiers"><i class="fas fa-star"></i>Premium Tiers</a>
+    <a href="#store"><i class="fas fa-store"></i>Store</a>
+    <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+  </nav>
+  <section id="home">
+    <h2>Welcome to SignalNode</h2>
+    <p>Your hub for smart, actionable forex insights. We deliver clean analysis, reliable signals, and professional tools to traders who demand more than noise.</p>
+    <p>Choose your tier. Trade with clarity. Scale with confidence.</p>
+    <div class="cta-buttons">
+      <a href="#free">Explore Free Analysis</a>
+      <a href="#tiers">Choose Your Tier</a>
+    </div>
+  </section>
+  <section id="about">
+    <h2>About SignalNode</h2>
+    <p>At SignalNode, we cut through the noise to deliver what traders actually need: clear, actionable setups rooted in technical precision.</p>
+    <p>Whether you're scalping intraday moves or riding macro trends, our goal is to give you high-conviction trade ideas with no fluff — just pure signal. Each analysis breaks down key levels, momentum shifts, and risk/reward plays using multi-timeframe strategies and institutional tools.</p>
+    <p>🔹 Free Access gives you high-probability setups like 200 EMA rejections, trend continuation plays, and clean chart breakdowns — always with clear entries, stops, and targets.</p>
+    <p>🔒 Premium Members unlock deeper insights: live market updates, scenario-based setups, smart risk management, and weekly flows to keep you in sync with the big picture.</p>
+    <p>If you’re done with hype, guessing games, and overcomplicated charts — welcome to the node. No distractions. Just trades that make sense.</p>
+  </section>
+  <section id="free">
+  <h2>Free Analysis</h2>
+  <p style="margin-top: -1rem; margin-bottom: 2rem;">We post fresh technical analyses every weekday around 08:00 CET. Clear setups. Free access. No noise.</p>
+  <div style="background: url('https://fxmedia.s3.amazonaws.com/articles/Trading_Forex_como_funciona_forex.jpeg'); background-size: cover; background-position: center; background-color: rgba(26, 27, 31, 0.85); background-blend-mode: overlay; padding: 2rem; border-radius: 10px; text-align: center;">
+    <h3 style="color: #3DA9FC;">📈 View Today's Free Analyses</h3>
+    <p style="margin: 0.5rem 0;"><a href="https://drive.google.com/drive/folders/YOUR_DAILY_ANALYSIS_FOLDER" target="_blank" style="color: #FFFFFF; text-decoration: underline;">Open Today’s Folder</a></p>
+    <h3 style="color: #3DA9FC; margin-top: 2rem;">📂 Archive</h3>
+    <p><a href="https://drive.google.com/drive/folders/YOUR_ARCHIVE_FOLDER" target="_blank" style="color: #FFFFFF; text-decoration: underline;">View Past Analyses</a></p>
+    <hr style="border: none; border-top: 1px solid #3DA9FC; width: 80%; margin: 2rem auto;">
+    <p style="color: #FFFFFF; font-size: 0.95rem;">📧 Want the free analysis sent to your email every morning?<br><a href="https://substack.com/@yournewsletter" target="_blank" style="color: #3DA9FC; text-decoration: underline;">Join the Free Newsletter</a></p>
+  </div>
+</section>
+  <section id="tiers">
+    <h2>Premium Tiers</h2>
+    <p>Choose the level that fits your trading rhythm — weekly, monthly, or yearly options available for each tier.</p>
+    <div class="tiers-container">
+      <div class="tier">
+        <h3>Scalp Access</h3>
+        <p class="price">€3/week · €9/month · €90/year</p>
+        <ul>
+          <li>3 assets covered</li>
+          <li>Intraday setups</li>
+          <li>Trade timing zones</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Swing Flow</h3>
+        <p class="price">€6/week · €19/month · €190/year</p>
+        <ul>
+          <li>6 assets covered</li>
+          <li>Multi-day setups</li>
+          <li>Scenario updates</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <h3>Full Node</h3>
+        <p class="price">€10/week · €29/month · €290/year</p>
+        <ul>
+          <li>All assets + requests</li>
+          <li>Live commentary</li>
+          <li>Institutional strategies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<section id="store">
+  <h2>Store</h2>
+  <p style="margin-bottom: 2rem;">Explore SignalNode gear, premium content, and trading tools. Here's what we offer:</p>
+  <div class="store-grid">
+    <div class="store-item">
+      <h3>🧢 Apparel</h3>
+      <p>Shirts, hoodies, and caps for traders.</p>
+      <a href="#">Shop Now</a>
+    </div>
+    <div class="store-item">
+      <h3>📚 Books</h3>
+      <p>Curated reads & exclusive trading publications.</p>
+      <a href="#">Browse Titles</a>
+    </div>
+    <div class="store-item">
+      <h3>🖼️ Prints</h3>
+      <p>Posters, charts, calendars & trading wall art.</p>
+      <a href="#">Order Prints</a>
+    </div>
+    <div class="store-item">
+      <h3>📖 Articles</h3>
+      <p>Deep-dive analysis and insights on Substack.</p>
+      <a href="https://substack.com/@yournewsletter" target="_blank">Read on Substack</a>
+    </div>
+    <div class="store-item">
+      <h3>🧰 Tools</h3>
+      <p>Scripts, spreadsheets & indicators to level up your edge.</p>
+      <a href="#">Access Tools</a>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>If you want to reach out, partner with us, or just share feedback — drop us a line below. We’ll get back to you soon.</p>
+
+  <hr style="border: none; border-top: 2px solid #3DA9FC; width: 60%; margin: 2rem auto;">
+
+  <div class="social-links" style="text-align: center;">
+    <p>
+      <i class="fab fa-x-twitter" style="color: #3DA9FC; margin-right: 0.5rem;"></i>
+      <strong>X (Twitter):</strong> We share market commentary, trade ideas, and news updates.<br>
+      <a href="https://x.com/yourhandle" target="_blank">@SignalNode</a>
+    </p>
+    <p>
+      <i class="fab fa-facebook" style="color: #3DA9FC; margin-right: 0.5rem;"></i>
+      <strong>Facebook:</strong> Follow us for upcoming events, community updates, and behind-the-scenes news.<br>
+      <a href="https://facebook.com/yourpage" target="_blank">Facebook Page</a>
+    </p>
+    <p>
+      <i class="fas fa-rss" style="color: #3DA9FC; margin-right: 0.5rem;"></i>
+      <strong>Substack:</strong> Subscribe to receive detailed trading analysis and weekly insights via email.<br>
+      <a href="https://substack.com/@yournewsletter" target="_blank">Substack Newsletter</a>
+    </p>
+    <p>
+      <i class="fab fa-telegram" style="color: #3DA9FC; margin-right: 0.5rem;"></i>
+      <strong>Telegram:</strong> Get our trading signals instantly in your Telegram app as soon as they drop.<br>
+      <a href="https://t.me/yourchannel" target="_blank">Telegram Channel</a>
+    </p>
+  </div>
+
+  <hr style="border: none; border-top: 2px solid #3DA9FC; width: 60%; margin: 2rem auto;">
+
+  <form action="#" method="post">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="5" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+  <footer>
+    &copy; 2025 SignalNode – Built for Traders, by Traders.
+  </footer>
+</body>
+</html>
